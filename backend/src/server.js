@@ -10,7 +10,7 @@ dotenv.config();
 // 3. Inisialisasi aplikasi Express
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // 4. Middleware dasar
 
@@ -50,20 +50,26 @@ app.get('/api/biodata', (req, res) => {
   });
 });
 
-app.put('/api/biodata', (req, res) => {
-    biodata = {
-        nama: req.body.nama,
-        kelas: req.body.kelas,
-        cita_cita: req.body.cita_cita,
-        hobi: req.body.hobi
-    };
+// ============================================
+// routes API (DAFTAR ROUTE DARI FOLDER ROUTES)
+// ============================================
+const profileRoutes = require('./routes/profileRoutes');
+app.use('/api/profile', profileRoutes);
 
-    res.status(200).json({
-        success: true,
-        data: biodata,
-        message: "Biodata berhasil diperbarui"
-    });
-});
+// app.put('/api/biodata', (req, res) => {
+//     biodata = {
+//         nama: req.body.nama,
+//         kelas: req.body.kelas,
+//         cita_cita: req.body.cita_cita,
+//         hobi: req.body.hobi
+//     };
+
+//     res.status(200).json({
+//         success: true,
+//         data: biodata,
+//         message: "Biodata berhasil diperbarui"
+//     });
+// });
 
 // 6. Middleware untuk menangani route yang tidak ditemukan (404 Not Found)
 
