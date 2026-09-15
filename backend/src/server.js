@@ -55,6 +55,7 @@ app.get('/api/biodata', (req, res) => {
 // ============================================
 const profileRoutes = require('./routes/profileRoutes');
 app.use('/api/profile', profileRoutes);
+app.use('/api/projects', require('./routes/projectRoutes'));
 
 // app.put('/api/biodata', (req, res) => {
 //     biodata = {
