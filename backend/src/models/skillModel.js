@@ -14,20 +14,20 @@ const getSkillById = async (id) => {
 
 // FUNGSI 3: Menambahkan skill baru (CREATE)
 const createSkill = async (data) => {
-  const { name, category, percentage, icon_url } = data;
+  const { name, category, icon } = data;
   const [result] = await db.query(
-    "INSERT INTO skills (name, category, percentage, icon_url) VALUES (?, ?, ?, ?)",
-    [name, category || "Other", percentage || 0, icon_url]
+    "INSERT INTO skills (name, category, icon) VALUES (?, ?, ?)",
+    [name, category || "Other", icon]
   );
   return result;
 };
 
 // FUNGSI 4: Memperbarui data skill (UPDATE)
 const updateSkill = async (id, data) => {
-  const { name, category, percentage, icon_url } = data;
+  const { name, category, icon } = data;
   const [result] = await db.query(
-    "UPDATE skills SET name = ?, category = ?, percentage = ?, icon_url = ? WHERE id = ?",
-    [name, category, percentage, icon_url, id]
+    "UPDATE skills SET name = ?, category = ?, icon = ? WHERE id = ?",
+    [name, category, icon, id]
   );
   return result;
 };

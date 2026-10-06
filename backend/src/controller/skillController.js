@@ -49,7 +49,7 @@ const getSkillById = async (req, res) => {
 // 3. Menambahkan skill baru (CREATE / POST)
 const createSkill = async (req, res) => {
   try {
-    const data = req.body;
+    const data = req.body || {};
     // Validasi: pastikan name tidak kosong
     if (!data.name) {
       return res.status(400).json({
@@ -77,7 +77,7 @@ const createSkill = async (req, res) => {
 const updateSkill = async (req, res) => {
   try {
     const { id } = req.params;
-    const data = req.body;
+    const data = req.body || {};
     // Validasi: pastikan name tidak kosong
     if (!data.name) {
       return res.status(400).json({
