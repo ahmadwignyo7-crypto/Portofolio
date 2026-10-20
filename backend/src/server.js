@@ -49,6 +49,7 @@ const skillRoutes = require('./routes/skillRoutes');
 const experienceRoutes = require('./routes/experienceRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const certificateRoutes = require('./routes/certificateRoutes');
+const testimoniRoutes = require('./routes/TestimoniRoutes');
 
 
 app.use('/api/profile', profileRoutes);
@@ -57,6 +58,7 @@ app.use('/api/skills', skillRoutes);
 app.use('/api/experiences', experienceRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/certificates', certificateRoutes);
+app.use('/api/testimoni', testimoniRoutes);
 
 
 // 6. Middleware untuk menangani route yang tidak ditemukan (404 Not Found)
