@@ -3,6 +3,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const path = require('path');
 
 // 2. Load file konfigurasi .env
 dotenv.config();
@@ -17,6 +18,7 @@ const PORT = process.env.PORT;
 app.use(cors()); // Mengizinkan request dari domain lain (Frontend)
 app.use(express.json()); // Membaca body request bertipe JSON
 app.use(express.urlencoded({ extended: true })); // Membaca body request bertipe form-data/url-encoded
+app.use('/uploads', express.static(path.join(__dirname, '../public/uploads'))); // Menyajikan file upload (CV, gambar, dll)
 
 // 5. Endpoint dasar (Testing Server)
 
@@ -50,6 +52,7 @@ const experienceRoutes = require('./routes/experienceRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const certificateRoutes = require('./routes/certificateRoutes');
 const testimoniRoutes = require('./routes/TestimoniRoutes');
+const resumeRoutes = require('./routes/resumeRoutes');
 
 
 app.use('/api/profile', profileRoutes);
@@ -59,6 +62,7 @@ app.use('/api/experiences', experienceRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/certificates', certificateRoutes);
 app.use('/api/testimoni', testimoniRoutes);
+app.use('/api/resumes', resumeRoutes);
 
 
 // 6. Middleware untuk menangani route yang tidak ditemukan (404 Not Found)
