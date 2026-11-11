@@ -53,8 +53,10 @@ const contactRoutes = require('./routes/contactRoutes');
 const certificateRoutes = require('./routes/certificateRoutes');
 const testimoniRoutes = require('./routes/TestimoniRoutes');
 const resumeRoutes = require('./routes/resumeRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 
+app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/skills', skillRoutes);
