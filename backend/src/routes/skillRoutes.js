@@ -9,12 +9,12 @@ router.get("/", skillController.getAllSkills);
 router.get("/:id", skillController.getSkillById);
 
 // POST /api/skills - Menambahkan skill baru
-router.post("/", skillController.createSkill);
+router.post("/", verifyToken, authorizeRoles('admin'), skillController.createSkill);
 
 // PUT /api/skills/:id - Memperbarui skill berdasarkan ID
-router.put("/:id", skillController.updateSkill);
+router.put("/:id", verifyToken, authorizeRoles('admin'), skillController.updateSkill);
 
 // DELETE /api/skills/:id - Menghapus skill berdasarkan ID
-router.delete("/:id", skillController.deleteSkill);
+router.delete("/:id", verifyToken, authorizeRoles('admin'), skillController.deleteSkill);
 
 module.exports = router;

@@ -12,9 +12,9 @@ router.get('/:id', testimoniController.getTestimoniById);
 router.post('/', testimoniController.createTestimoni);
 
 // 4. PUT /api/testimoni/:id - Update data testimoni berdasarkan ID
-router.put('/:id', testimoniController.updateTestimoni);
+router.put('/:id', verifyToken, authorizeRoles('admin'), testimoniController.updateTestimoni);
 
 // 5. DELETE /api/testimoni/:id - Hapus data testimoni berdasarkan ID
-router.delete('/:id', testimoniController.deleteTestimoni);
+router.delete('/:id', verifyToken, authorizeRoles('admin'), testimoniController.deleteTestimoni);
 
 module.exports = router;
