@@ -9,7 +9,7 @@ router.get('/', testimoniController.getAllTestimoni);
 router.get('/:id', testimoniController.getTestimoniById);
 
 // 3. POST /api/testimoni - Tambah data testimoni baru
-router.post('/', testimoniController.createTestimoni);
+router.post('/', verifyToken, authorizeRoles('admin'), testimoniController.createTestimoni);
 
 // 4. PUT /api/testimoni/:id - Update data testimoni berdasarkan ID
 router.put('/:id', verifyToken, authorizeRoles('admin'), testimoniController.updateTestimoni);

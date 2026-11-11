@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const projectController = require("../controller/projectController");
+const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 // GET /api/projects - Mengambil semua proyek
 router.get("/", projectController.getAllProjects);

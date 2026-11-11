@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const skillController = require("../controller/skillController");
+const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 // GET /api/skills - Mengambil semua skill
 router.get("/", skillController.getAllSkills);

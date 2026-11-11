@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const experienceController = require("../controller/experienceController");
+const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 // GET /api/experiences - Mengambil semua experience
 router.get("/", experienceController.getAllExperiences);
