@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const testimoniController = require('../controller/TestimoniController');
+const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 // 1. GET /api/testimoni - Ambil semua data testimoni
 router.get('/', testimoniController.getAllTestimoni);
