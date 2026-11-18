@@ -14,20 +14,20 @@ const getProjectById = async (id) => {
 
 // FUNGSI 3: Menambahkan proyek baru (CREATE)
 const createProject = async (data) => {
-  const { title, description, category, image_url, demo_url, github_url, tech_stack, is_featured } = data;
+  const { title, description, category, image_url, github_url, tech_stack, is_featured } = data;
   const [result] = await db.query(
-    "INSERT INTO projects (title, description, category, image_url, demo_url, github_url, tech_stack, is_featured) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-    [title, description, category, image_url, demo_url, github_url, tech_stack, is_featured || false]
+    "INSERT INTO projects (title, description, category, image_url, github_url, tech_stack, is_featured) VALUES (?, ?, ?, ?, ?, ?, ?)",
+    [title, description, category, image_url, github_url, tech_stack, is_featured || false]
   );
   return result;
 };
 
 // FUNGSI 4: Memperbarui data proyek (UPDATE)
 const updateProject = async (id, data) => {
-  const { title, description, category, image_url, demo_url, github_url, tech_stack, is_featured } = data;
+  const { title, description, category, image_url, github_url, tech_stack, is_featured } = data;
   const [result] = await db.query(
-    "UPDATE projects SET title = ?, description = ?, category = ?, image_url = ?, demo_url = ?, github_url = ?, tech_stack = ?, is_featured = ? WHERE id = ?",
-    [title, description, category, image_url, demo_url, github_url, tech_stack, is_featured, id]
+    "UPDATE projects SET title = ?, description = ?, category = ?, image_url = ?, github_url = ?, tech_stack = ?, is_featured = ? WHERE id = ?",
+    [title, description, category, image_url, github_url, tech_stack, is_featured, id]
   );
   return result;
 };

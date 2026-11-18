@@ -4,10 +4,10 @@ const projectController = require("../controller/projectController");
 const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 // GET /api/projects - Mengambil semua proyek
-router.get("/", projectController.getAllProjects);
+router.get("/", verifyToken, projectController.getAllProjects);
 
 // GET /api/projects/:id - Mengambil satu proyek berdasarkan ID
-router.get("/:id", projectController.getProjectById);
+router.get("/:id", verifyToken, projectController.getProjectById);
 
 // POST /api/projects - Menambahkan proyek baru
 router.post("/", verifyToken, authorizeRoles('admin'), projectController.createProject);
