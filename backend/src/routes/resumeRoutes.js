@@ -9,7 +9,7 @@ router.get('/', verifyToken, authorizeRoles('admin'), resumeController.getAllRes
 
 // 2. GET /api/resumes/active - Ambil 1 CV aktif (Publik, untuk tombol Download CV frontend)
 //    Route ini HARUS didaftarkan SEBELUM /:id agar tidak tertangkap sebagai ID
-router.get('/active', verifyToken, authorizeRoles('admin','user'), resumeController.getActiveResume);
+router.get('/active', verifyToken, resumeController.getActiveResume);
 
 // 3. GET /api/resumes/:id - Ambil detail CV berdasarkan ID (Admin)
 router.get('/:id', verifyToken, authorizeRoles('admin'), resumeController.getResumeById);

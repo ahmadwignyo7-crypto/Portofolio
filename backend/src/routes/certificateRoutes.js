@@ -4,10 +4,10 @@ const certificateController = require('../controller/certificateController');
 const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 // 1. GET /api/certificates - Ambil semua data sertifikat (Publik)
-router.get('/', certificateController.getAllCertificates);
+router.get('/', verifyToken,certificateController.getAllCertificates);
 
 // 2. GET /api/certificates/:id - Ambil 1 sertifikat berdasarkan ID (Publik)
-router.get('/:id', certificateController.getCertificateById);
+router.get('/:id',verifyToken, certificateController.getCertificateById);
 
 // 3. POST /api/certificates - Tambah data sertifikat baru (Admin)
 router.post('/', verifyToken, authorizeRoles('admin'), certificateController.createCertificate);

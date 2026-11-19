@@ -4,10 +4,10 @@ const skillController = require("../controller/skillController");
 const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 // GET /api/skills - Mengambil semua skill
-router.get("/", skillController.getAllSkills);
+router.get("/", verifyToken,skillController.getAllSkills);
 
 // GET /api/skills/:id - Mengambil satu skill berdasarkan ID
-router.get("/:id", skillController.getSkillById);
+router.get("/:id",verifyToken, skillController.getSkillById);
 
 // POST /api/skills - Menambahkan skill baru
 router.post("/", verifyToken, authorizeRoles('admin'), skillController.createSkill);

@@ -4,10 +4,10 @@ const experienceController = require("../controller/experienceController");
 const { verifyToken, authorizeRoles } = require('../middleware/authMiddleware');
 
 // GET /api/experiences - Mengambil semua experience
-router.get("/", experienceController.getAllExperiences);
+router.get("/",verifyToken, experienceController.getAllExperiences);
 
 // GET /api/experiences/:id - Mengambil satu experience berdasarkan ID
-router.get("/:id", experienceController.getExperienceById);
+router.get("/:id",verifyToken, experienceController.getExperienceById);
 
 // POST /api/experiences - Menambahkan experience baru
 router.post("/", verifyToken, authorizeRoles('admin'), experienceController.createExperience);
